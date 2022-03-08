@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maBoulangerie.fr</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <!--Favicon link-->
+    <link rel="icon" type="image/x-icon" href="./assets/bakery.ico">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/8f6b316922.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="container-login blur">
+            <header>
+                <a href="#" class="logo">Ma Boulangerie</a>
+                <div class="toggle">
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Profil</a></li>
+                        <li><a href="#"><i class="fas fa-shopping-basket"></i>Mon panier</a></li>
+                    </ul>
+                </div>
+            </header>
+
+            <section class="login">
+                <div class="content">
+                    <div class="blockColor"></div>
+                    <div class="contentBx">
+                        <h3>Connexion</h3>
+                        <form>    
+                            <fieldset>
+                                <div class="field">
+                                <label for="fname">Email</label> <br>
+                                <input type="text" id="fname" name="fname" value="">
+                                </div>
+        
+                                <div class="field">
+                                <label for="lname">Mot de Passe</label> <br>
+                                <input type="password" id="lname" name="lname" value="">
+                                </div>
+                                <a href="#">Mot de passe oublié?</a><br>
+                                <button>Connexion</button>
+                            </fieldset>        
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="block">
+                    <h3>Heure d'ouverture</h3>
+                    <p>
+                    Lundi: Fermé <br>
+                    Mardi-Mercredi : 9h - 18h<br>
+                    Jeudi-Vendredi : 9h - 18h<br>
+                    Samedi-Dimanche : 9h - 12h
+                    </p>
+                </div>
+
+                <div class="block">
+                    <h3>Contact</h3>
+                    <div class="adress">
+                        <p>
+                        13 Bd Galopin Renoue<br>
+                        Maine-et-Loire,<br>
+                        49000 Angers<br>
+                        01.02.03.45.47
+                        </p>
+                    </div>
+                </div>
+
+                <div class="block">
+                    <h3>Social networks</h3>
+                    <div class="social-network">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest-p"></i>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.addEventListener('scroll', function (){
+            let header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        })
+    </script>
+</body>
+</html>
