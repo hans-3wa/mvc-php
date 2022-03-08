@@ -8,28 +8,28 @@ require "./controller/ProductController.php";
 
 $url = isset($_GET['url']) ? $_GET['url'] : "home"; 
 
-$homeController = new HomeController();
-$userController = new UserController();
-$productController = new ProductController();
-
 switch($url){
     // Route index.php?url=home
     case "home" : 
+        $homeController = new HomeController();
         $homeController->home();
         break;
     
-    // Route index.php?url=profile
-    case "profile" :
+    // Route index.php?url=account
+    case "account" :
+        $userController = new UserController();
         $userController->account();
         break;
     
     // Route index.php?url=login
     case "login" :
+        $userController = new UserController();
         $userController->login();
         break;
         
-    // Route index.php?url=login
+    // Route index.php?url=shop
     case "shop" :
+        $homeController = new HomeController();
         $homeController->shop();
         break;
 }

@@ -9,8 +9,5 @@ class ProductRepository extends AbstractRepository {
     public function __construct(){
         parent::__construct(self::TABLE);
     }
-    
-    public function fetchAll(){
-        $data = $this->fetch();
-    }
+
 }

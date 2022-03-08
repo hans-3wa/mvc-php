@@ -17,7 +17,7 @@ abstract class AbstractRepository
         $this->table = $table;
     }
     
-    protected function fetch(){
+    public function fetchAll(){
         $data = null;
         try {
             $resultat = $this->connexion->query('SELECT * FROM '.$this->table);
