@@ -1,7 +1,7 @@
 <?php 
 require_once './view/AbstractView.php';
 require_once './model/page/ShopPage.php';
-require_once './model/page/HomePage.php';
+require_once './model/page/DefaultPage.php';
 
 class HomeView {
     
@@ -10,8 +10,9 @@ class HomeView {
      */ 
     public function displayHome(): string
     {
-        $homePage = new HomePage();
-        return $homePage->getPage();
+        $page = new DefaultPage('index');
+        
+        return $page->getPage();
     }
     
     /**

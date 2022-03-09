@@ -2,9 +2,9 @@
 // Router
 session_start();
 
-require "./controller/HomeController.php";
-require "./controller/UserController.php";
-require "./controller/ProductController.php";
+require_once './controller/HomeController.php';
+require_once '/controller/UserController.php';
+require_once './controller/ProductController.php';
 
 $url = isset($_GET['url']) ? $_GET['url'] : "home"; 
 
@@ -25,6 +25,16 @@ switch($url){
     case "login" :
         $userController = new UserController();
         $userController->login();
+        break;
+    
+    case "securityLogin" : 
+        $userController = new UserController();
+        $userController->securityLogin();
+        break;
+    
+    case "logout" : 
+        $userController = new UserController();
+        $userController->logout();
         break;
         
     // Route index.php?url=shop

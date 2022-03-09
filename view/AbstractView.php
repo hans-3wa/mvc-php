@@ -1,7 +1,6 @@
 <?php 
 require_once "./service/Utils.php";
 require_once "./model/template/HeadTemplate.php";
-require_once "./model/template/BodyTemplate.php";
 
 abstract class AbstractView {
     
@@ -19,10 +18,9 @@ abstract class AbstractView {
     
     public $utils;
     
-    public function __construct(){
-        
+    public function __construct()
+    {
         $this->utils = new Utils();
-        
         $this->head = new HeadTemplate();
         $this->header = $this->utils->searchInc('header');
         $this->footer = $this->utils->searchInc('footer');
@@ -31,7 +29,6 @@ abstract class AbstractView {
     protected function setHeader($header = false){
         $this->header = $header ? $this->utils->searchInc($header) : "";
     }
-    
     
     protected function setBody($body = false){
         $this->body = $body;
@@ -58,12 +55,5 @@ abstract class AbstractView {
         $this->page .= $this->footer;
         $this->page .= $this->javascript;
     }
-    
-    
-    public function displayPage(){
-        $this->constructPage();
-        return $this->page;
-    }
-    
     
 }

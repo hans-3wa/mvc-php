@@ -1,6 +1,6 @@
 <?php 
 require_once './view/AbstractView.php';
-require_once './model/page/AccountPage.php';
+require_once './model/page/DefaultPage.php';
 
 class UserView {
     
@@ -9,7 +9,7 @@ class UserView {
      */ 
     public function displayAccount(): string
     {
-        $page = new AccountPage('account');
+        $page = new DefaultPage("account");
         return $page->getPage();
     }
     
@@ -18,7 +18,7 @@ class UserView {
      */ 
     public function displayLogin(): string
     {
-        $page = new AccountPage('login');
+        $page = new DefaultPage("login");
         return $page->getPage();
     }
 }
