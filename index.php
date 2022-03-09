@@ -6,7 +6,7 @@ require "./controller/HomeController.php";
 require "./controller/UserController.php";
 require "./controller/ProductController.php";
 
-$url = isset($_GET['url']) ? $_GET['url'] : "home"; 
+$url = $_GET['url'] ?? "home";
 
 switch($url){
     // Route index.php?url=home
