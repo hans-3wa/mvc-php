@@ -1,6 +1,8 @@
 <?php 
 require_once "./service/Utils.php";
 require_once "./view/AbstractView.php";
+require_once "./service/Pagination.php";
+
 
 class ShopPage extends AbstractView {
     
@@ -53,8 +55,13 @@ class ShopPage extends AbstractView {
     
     private function constructShop(): void
     {
-        
-        foreach($this->products as $product){
+        // si &page=1
+        $page = $_GET['page'] ?? 0; // si pas de &page met par défault 0
+
+        $pagination = new Pagination($this->products, 3);
+        $pagination->setCurrent($page);
+
+        foreach($pagination->getDatasetByPage() as $product){
             $page = $this->utils->searchInc('shopArticle');
             $page = str_replace('{% title %}', $product->getName(), $page);
             $page = str_replace('{% image %}', $product->getUrlPicture(), $page);
@@ -64,6 +71,8 @@ class ShopPage extends AbstractView {
         }
         
         $this->body = str_replace('{% article %}', $this->article, $this->body);
+        $this->body = str_replace('{% pagination %}', $pagination->getLinks("?url=shop") , $this->body);
+
         $this->constructPage();
     }
 }
