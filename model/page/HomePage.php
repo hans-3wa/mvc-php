@@ -1,33 +1,14 @@
 <?php 
 require_once "./service/Utils.php";
 
-class HomePage {
-    
-    
-    private string $page;
-    
-    private Utils $utils;
+class HomePage extends AbstractView {
     
     public function __construct()
     {
-        $this->utils = new Utils();
-        $this->page = $this->utils->searchHtml('index');
+        parent::__construct();
+        $this->body = $this->utils->searchHtml('index');
+        $this->constructPage();
         
     }
-    
-    /**
-     * @return string
-     */
-    public function getpage(): string
-    {
-        return $this->page;
-    }
-    
-    /**
-     * @param string $page
-     */
-    public function setpage(string $page)
-    {
-        $this->page = $page;
-    }
+
 }

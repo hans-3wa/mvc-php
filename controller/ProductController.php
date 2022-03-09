@@ -9,8 +9,4 @@ class ProductController {
         $this->repository = new ProductRepository();
     }
     
-    
-    public function shop(){
-        $this->repository->test();
-    }
 }

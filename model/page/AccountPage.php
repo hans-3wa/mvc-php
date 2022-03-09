@@ -1,34 +1,21 @@
 <?php 
 require_once "./service/Utils.php";
+require_once "./view/AbstractView.php";
 
-class AccountPage {
+class AccountPage extends AbstractView {
     
+    private string $html;
     
-    private string $page;
-    
-    public Head $head;
-    
-    private Utils $utils;
-    
-    public function __construct()
+    public function __construct($html)
     {
-        $this->utils = new Utils();
-        $this->page = $this->utils->searchHtml('account');
+        $this->html = $html ?? '';
+        parent::__construct();
+        $this->head->setTitle('Acount');
+        $this->body = $this->utils->searchHtml($this->html);
+        $this->setHeader();
+        $this->setFooter();
+        $this->constructPage();
     }
     
-    /**
-     * @return string
-     */
-    public function getpage(): string
-    {
-        return $this->page;
-    }
     
-    /**
-     * @param string $page
-     */
-    public function setpage(string $page)
-    {
-        $this->page = $page;
-    }
 }

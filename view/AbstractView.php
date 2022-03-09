@@ -5,26 +5,25 @@ require_once "./model/template/BodyTemplate.php";
 
 abstract class AbstractView {
     
-    protected $page;
+    public $page;
     
-    protected $head;
+    public $head;
     
-    protected $header;
+    public $header;
     
-    protected $body;
+    public $body;
     
-    protected $footer;
+    public $footer;
     
-    protected $javascript; 
+    public $javascript; 
     
-    private $utils;
+    public $utils;
     
     public function __construct(){
         
         $this->utils = new Utils();
         
         $this->head = new HeadTemplate();
-        $this->body = new BodyTemplate();
         $this->header = $this->utils->searchInc('header');
         $this->footer = $this->utils->searchInc('footer');
     }
@@ -35,7 +34,7 @@ abstract class AbstractView {
     
     
     protected function setBody($body = false){
-        $this->body->setContent($body ?? "");
+        $this->body = $body;
     }
     
     protected function setFooter($footer = false){
@@ -46,17 +45,22 @@ abstract class AbstractView {
         $this->javascript .= $script ? $this->utils->searchScript($script) : '';
     }
     
+    public function getPage(): string 
+    {
+        return $this->page;
+    }
     
-    protected function constructPage(){
+    
+    public function constructPage(){
         $this->page .= $this->head->getContent();
         $this->page .= $this->header;
-        $this->page .= $this->body->getContent();
+        $this->page .= $this->body;
         $this->page .= $this->footer;
         $this->page .= $this->javascript;
     }
     
     
-    protected function displayPage(){
+    public function displayPage(){
         $this->constructPage();
         return $this->page;
     }
