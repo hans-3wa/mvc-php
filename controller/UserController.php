@@ -42,6 +42,11 @@ class UserController {
             exit();
         }
         
+        if(!$_SESSION['csrf'] || $_SESSION['csrf'] !== $_POST['csrf_token']){
+            header('location: ./index.php?url=login');
+            exit();
+        }
+        
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
         

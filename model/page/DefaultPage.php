@@ -56,14 +56,21 @@ class DefaultPage extends AbstractPage {
                 
                 $email = $this->errors['email'] ?? "";
                 $message  = $this->errors['message'] ?? "";
+                $csrf = $this->csrf ?? "";
                 
                 $this->body = str_replace('{% email %}', $email, $this->body);
                 $this->body = str_replace('{% messageError %}', $message, $this->body);
+                $this->body = str_replace('{% csrf %}', $csrf, $this->body);
                 
                 $this->constructPage();
                 break;
             
             case 'register':
+                $this->setFooter();
+                $this->constructPage();
+                break;
+                
+            case 'account':
                 $this->setFooter();
                 $this->constructPage();
                 break;
