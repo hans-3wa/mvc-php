@@ -1,5 +1,5 @@
 <?php 
-require_once './view/AbstractView.php';
+require_once './service/AbstractPage.php';
 require_once './model/page/ShopPage.php';
 require_once './model/page/DefaultPage.php';
 
@@ -11,7 +11,7 @@ class HomeView {
     public function displayHome(): string
     {
         $page = new DefaultPage('index');
-        
+        $page->assemblerPage();
         return $page->getPage();
     }
     

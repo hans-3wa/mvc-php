@@ -24,7 +24,15 @@ class UserController {
     
     public function login(): void
     {
-        echo $this->view->displayLogin();
+        $email = $_GET['email'] ?? '';
+        $code = isset($_GET['code']) ? (int)$_GET['code']: 200;
+        $errors = [];
+        
+        if($code === 401){
+            $errors = ['email' => $email, "message" => "Identifiants incorrects"];
+        }
+        
+        echo $this->view->displayLogin($errors);
     }
     
     public function securityLogin(): void
@@ -58,7 +66,7 @@ class UserController {
             exit();
         } 
         else {
-            header('location: ./index.php?url=login');
+            header('location: ./index.php?url=login&email='.$email.'&code=401');
             exit();
         }
         

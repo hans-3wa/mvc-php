@@ -1,12 +1,16 @@
 <?php 
 require_once "./service/Utils.php";
-require_once "./view/AbstractView.php";
+require_once "./service/AbstractPage.php";
 
-class DefaultPage extends AbstractView {
+class DefaultPage extends AbstractPage {
     
     private string $html;
     
-    private string $titleHead;
+    private array $errors;
+    
+    private array $data;
+    
+    private string $csrf;
     
     
     public function __construct(string $html)
@@ -15,8 +19,30 @@ class DefaultPage extends AbstractView {
         
         $this->html = $html;
         $this->body = $this->utils->searchHtml($html);
-        $this->assemblerPage();
+        
     }
+    
+    
+    public function getErrors(): array
+    {
+        return $this->errors;
+    }
+    
+    public function setErrors($errors): void
+    {
+        $this->errors = $errors;
+    }
+    
+    public function getCsrf(): string
+    {
+        return $this->csrf;
+    }
+    
+    public function setCsrf($csrf): void
+    {
+        $this->csrf = $csrf;
+    }
+    
     
     public function assemblerPage(): void 
     {
@@ -25,15 +51,15 @@ class DefaultPage extends AbstractView {
                 $this->constructPage();
                 break;
                 
-            case 'account':
-                $this->head->setTitle('Mon profil');
-                $this->setHeader();
-                $this->setFooter();
-                $this->constructPage();
-                break;
-                
             case 'login':
                 $this->setFooter();
+                
+                $email = $this->errors['email'] ?? "";
+                $message  = $this->errors['message'] ?? "";
+                
+                $this->body = str_replace('{% email %}', $email, $this->body);
+                $this->body = str_replace('{% messageError %}', $message, $this->body);
+                
                 $this->constructPage();
                 break;
             

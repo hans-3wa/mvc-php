@@ -6,16 +6,18 @@
                     <div class="blockColor"></div>
                     <div class="contentBx">
                         <h3>Connexion</h3>
+                        <span style="color: red;">{% messageError %}</span>
                         <form action="./index.php?url=securityLogin" method="POST">    
                             <fieldset>
                                 <div class="field">
                                 <label for="email">Email</label> <br>
-                                <input type="email" id="email" name="email" value="">
+                                <input type="email" id="email" name="email" value="{% email %}" required>
                                 </div>
         
                                 <div class="field">
                                 <label for="password">Mot de Passe</label> <br>
-                                <input type="password" id="password" name="password" value="">
+                                <input type="password" id="password" name="password" value="" required>
+                                <input type="hidden" name="csrf_token" value="{% csrf %}">
                                 </div>
                                 <a href="#">Mot de passe oublié?</a><br>
                                 <button>Connexion</button>

@@ -1,10 +1,10 @@
 <?php 
 require_once "./service/Utils.php";
-require_once "./view/AbstractView.php";
+require_once "./service/AbstractPage.php";
 require_once "./service/Pagination.php";
 
 
-class ShopPage extends AbstractView {
+class ShopPage extends AbstractPage {
     
     private string $article;
     

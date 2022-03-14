@@ -2,7 +2,7 @@
 require_once "./service/Utils.php";
 require_once "./model/template/HeadTemplate.php";
 
-abstract class AbstractView {
+abstract class AbstractPage {
     
     public $page;
     
@@ -28,10 +28,6 @@ abstract class AbstractView {
     
     protected function setHeader($header = false){
         $this->header = $header ? $this->utils->searchInc($header) : "";
-    }
-    
-    protected function setBody($body = false){
-        $this->body = $body;
     }
     
     protected function setFooter($footer = false){
