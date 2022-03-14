@@ -13,7 +13,7 @@ class DefaultPage extends AbstractView {
     {
         parent::__construct();
         
-        $this->html = $html ?? '';
+        $this->html = $html;
         $this->body = $this->utils->searchHtml($html);
         $this->assemblerPage();
     }
@@ -33,6 +33,11 @@ class DefaultPage extends AbstractView {
                 break;
                 
             case 'login':
+                $this->setFooter();
+                $this->constructPage();
+                break;
+            
+            case 'register':
                 $this->setFooter();
                 $this->constructPage();
                 break;
