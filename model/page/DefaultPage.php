@@ -19,7 +19,6 @@ class DefaultPage extends AbstractPage {
         
         $this->html = $html;
         $this->body = $this->utils->searchHtml($html);
-        
     }
     
     

@@ -16,12 +16,14 @@ class HomeView {
     }
     
     /**
-     * @param string
+     * @param array $products
+     * @return string
      */ 
-    public function displayShop($products): string
+    public function displayShop(array $products): string
     {
         $shopPage = new ShopPage();
         $shopPage->setProducts($products);
+        $shopPage->constructShop();
         return $shopPage->getPage();
     }
 }

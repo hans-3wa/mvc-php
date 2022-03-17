@@ -4,37 +4,41 @@ require_once "./model/template/HeadTemplate.php";
 
 abstract class AbstractPage {
     
-    public $page;
+    private string $page;
     
-    public $head;
+    protected HeadTemplate $head;
     
-    public $header;
+    protected string $header;
     
-    public $body;
+    protected string $body;
     
-    public $footer;
+    protected string $footer;
     
-    public $javascript; 
+    protected $javascript; 
     
-    public $utils;
+    protected Utils $utils;
     
     public function __construct()
     {
         $this->utils = new Utils();
+        $this->page = '';
         $this->head = new HeadTemplate();
         $this->header = $this->utils->searchInc('header');
         $this->footer = $this->utils->searchInc('footer');
     }
     
-    protected function setHeader($header = false){
+    protected function setHeader($header = false): void
+    {
         $this->header = $header ? $this->utils->searchInc($header) : "";
     }
     
-    protected function setFooter($footer = false){
+    protected function setFooter($footer = false): void
+    {
         $this->footer = $footer ? $this->utils->searchInc($footer) : "";
     }
     
-    protected function setJavascript($script){
+    protected function setJavascript(string $script): void
+    {
         $this->javascript .= $script ? $this->utils->searchScript($script) : '';
     }
     
@@ -44,12 +48,12 @@ abstract class AbstractPage {
     }
     
     
-    public function constructPage(){
+    public function constructPage(): void
+    {
         $this->page .= $this->head->getContent();
         $this->page .= $this->header;
         $this->page .= $this->body;
         $this->page .= $this->footer;
         $this->page .= $this->javascript;
     }
-    
 }

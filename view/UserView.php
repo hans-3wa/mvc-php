@@ -20,9 +20,12 @@ class UserView {
     {
         $page = new DefaultPage("login");
         $page->setErrors($errors);
+        
         $_SESSION['csrf'] = bin2hex(random_bytes(15));
+        
         $page->setCsrf($_SESSION['csrf']);
         $page->assemblerPage();
+        
         return $page->getPage();
     }
 }

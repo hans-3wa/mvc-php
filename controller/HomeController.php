@@ -21,7 +21,7 @@ class HomeController {
         $productRepository = new ProductRepository();
         $datas = $productRepository->fetchAll();
         $products = [];
-        
+        //var_dump($datas); die();
         foreach($datas as $data){
             $product = new Product();
             $product->setId($data['id']);
@@ -33,6 +33,8 @@ class HomeController {
             
             $products[] = $product;
         }
+        //var_dump($products, $datas); die();
+        
         
         echo $this->view->displayShop($products);
     }

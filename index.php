@@ -42,5 +42,12 @@ switch($url){
         $homeController = new HomeController();
         $homeController->shop();
         break;
+        
+    case "product":
+        $productController = new ProductController();
+        $productController->getProduct();
+    
+    case "404":
+        echo "Welcolm 404 mon poto :)";
 }
 

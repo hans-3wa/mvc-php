@@ -25,12 +25,13 @@ class UserController {
     public function login(): void
     {
         $email = $_GET['email'] ?? '';
-        $code = isset($_GET['code']) ? (int)$_GET['code']: 200;
+        $code = isset($_GET['code']) ? (int)$_GET['code'] : 200;
         $errors = [];
         
         if($code === 401){
-            $errors = ['email' => $email, "message" => "Identifiants incorrects"];
+            $errors = ["email" => $email, "message" => "Identifiants incorrects"];
         }
+        //var_dump($email, $code, $errors); die();
         
         echo $this->view->displayLogin($errors);
     }
@@ -57,6 +58,7 @@ class UserController {
             if(!password_verify($password, $data['password'])){
                 // Mauvais mot de pass
             }
+            
             $user = new User();
             $user->setid($data['id']);
             $user->setName($data['name']);
@@ -74,7 +76,6 @@ class UserController {
             header('location: ./index.php?url=login&email='.$email.'&code=401');
             exit();
         }
-        
     }
     
     public function logout(): void

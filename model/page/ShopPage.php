@@ -49,30 +49,41 @@ class ShopPage extends AbstractPage {
     public function setProducts(array $products)
     {
         $this->products = $products;
-        $this->constructShop();
     }
     
     
-    private function constructShop(): void
+    public function constructShop(): void
     {
-        // si &page=1
-        $page = $_GET['page'] ?? 0; // si pas de &page met par défault 0
+        // Avec Pagination
+        // // si &page=1
+        // $page = $_GET['page'] ?? 0; // si pas de &page met par défault 0
 
-        $pagination = new Pagination($this->products, 3);
-        $pagination->setCurrent($page);
+        // $pagination = new Pagination($this->products, 3);
+        // $pagination->setCurrent($page);
 
-        foreach($pagination->getDatasetByPage() as $product){
-            $page = $this->utils->searchInc('shopArticle');
-            $page = str_replace('{% title %}', $product->getName(), $page);
-            $page = str_replace('{% image %}', $product->getUrlPicture(), $page);
-            $page = str_replace('{% description %}', $product->getDescription(), $page);
-            $page = str_replace('{% id %}', $product->getId(), $page);
-            $this->article .= $page;
+        // foreach($pagination->getDatasetByPage() as $product){
+            
+        //     $page = $this->utils->searchInc('shopArticle');
+        //     $page = str_replace('{% title %}', $product->getName(), $page);
+        //     $page = str_replace('{% image %}', $product->getUrlPicture(), $page);
+        //     $page = str_replace('{% description %}', $product->getDescription(), $page);
+        //     $page = str_replace('{% id %}', $product->getId(), $page);
+        //     $this->article .= $page;
+        // }
+        
+        foreach($this->products as $product){
+            $content = $this->utils->searchInc('shopArticle');
+            $content = str_replace('{% title %}', $product->getName(), $content);
+            $content = str_replace('{% image %}', $product->getUrlPicture(), $content);
+            $content = str_replace('{% description %}', $product->getDescription(), $content);
+            $content = str_replace('{% id %}', $product->getId(), $content);
+            $this->article .= $content;
         }
         
         $this->body = str_replace('{% article %}', $this->article, $this->body);
-        $this->body = str_replace('{% pagination %}', $pagination->getLinks("?url=shop") , $this->body);
-
+        //$this->body = str_replace('{% pagination %}', $pagination->getLinks("?url=shop") , $this->body);
+        
+        
         $this->constructPage();
     }
 }
