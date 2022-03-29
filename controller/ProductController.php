@@ -34,4 +34,11 @@ class ProductController {
         echo $this->view->displayProduct($product);
     }
     
+    public function querySearch()
+    {
+        $query = $_GET['q'] ?? "";
+        $products = $this->repository->fetchQuery($query);
+        echo json_encode($products);
+    }
+    
 }

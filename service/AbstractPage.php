@@ -39,7 +39,7 @@ abstract class AbstractPage {
     
     protected function setJavascript(string $script): void
     {
-        $this->javascript .= $script ? $this->utils->searchScript($script) : '';
+        $this->javascript .=  $script ? "<script type='text/javascript'>".$this->utils->searchScript($script)."</script>" : '';
     }
     
     public function getPage(): string 

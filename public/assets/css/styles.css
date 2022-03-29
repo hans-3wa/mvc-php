@@ -22,7 +22,6 @@ PORTFEUILLE
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 body {
   background-color: #e9e6dc;
   color: #422f2d;
@@ -682,4 +681,26 @@ PAGE
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+#list-search{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+
+@media screen and (max-width: 768px) {
+  .desktop{
+    display: none;
+  }
+  header{
+    flex-direction: column;
+  }
+  footer{
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+  }
 }

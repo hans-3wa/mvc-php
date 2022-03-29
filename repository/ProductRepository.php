@@ -27,5 +27,24 @@ class ProductRepository extends AbstractRepository {
         
         return $data;
     }
+    
+    public function fetchQuery($product)
+    {
+        $request = '%'.$product.'%';
+        $data = null;
+        try {
+            $query = $this->connexion->prepare("SELECT * FROM products WHERE name LIKE :name LIMIT 0, 3");
+            if ($query) {
+                $query->bindParam(':name', $request);
+                $query->execute();
+                
+                $data = $query->fetchAll(PDO::FETCH_ASSOC);
+            }
+        } catch (Exception $e) {
+            die($e);
+        }
+        
+        return $data;
+    }
 
 }

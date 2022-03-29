@@ -16,7 +16,7 @@ class DefaultPage extends AbstractPage {
     public function __construct(string $html)
     {
         parent::__construct();
-        
+        $this->setJavascript('ajax');
         $this->html = $html;
         $this->body = $this->utils->searchHtml($html);
     }
