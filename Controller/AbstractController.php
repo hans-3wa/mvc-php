@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../repository/ProductRepository.php";
+require_once "../Repository/ProductRepository.php";
 
 class AbstractController {
     

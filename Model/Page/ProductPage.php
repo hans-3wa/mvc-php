@@ -1,5 +1,6 @@
-<?php 
-require_once "./model/Product.php";
+<?php
+namespace App\Model\Page;
+require_once "./Model/Product.php";
 
 
 class ProductPage extends AbstractPage {

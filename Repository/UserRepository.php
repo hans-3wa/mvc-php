@@ -1,6 +1,8 @@
 <?php 
+namespace App\Repository;
+use PDO;
 
-require_once "./repository/AbstractRepository.php";
+require_once "./Repository/AbstractRepository.php";
 
 class UserRepository extends AbstractRepository {
     
@@ -26,7 +28,7 @@ class UserRepository extends AbstractRepository {
                 
                 $data = $query->fetch(PDO::FETCH_ASSOC);
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             die($e);
         }
         

@@ -1,4 +1,5 @@
-<?php 
+<?php
+namespace App\Service;
 class Utils {
     
     public function searchHtml($filename){

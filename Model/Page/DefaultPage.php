@@ -1,6 +1,7 @@
-<?php 
-require_once "./service/Utils.php";
-require_once "./service/AbstractPage.php";
+<?php
+namespace App\Model\Page;
+
+use App\Service\AbstractPage;
 
 class DefaultPage extends AbstractPage {
     

@@ -1,7 +1,8 @@
 <?php
+namespace App\Model\Entity;
+
 class User {
-    
-    
+
     private int $id;
     
     private string $name;

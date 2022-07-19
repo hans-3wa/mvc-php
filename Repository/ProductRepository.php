@@ -1,6 +1,6 @@
 <?php 
-
-require_once "./repository/AbstractRepository.php";
+namespace App\Repository;
+require_once "./Repository/AbstractRepository.php";
 
 class ProductRepository extends AbstractRepository {
     

@@ -1,6 +1,7 @@
-<?php 
-require_once "./service/Utils.php";
-require_once "./model/template/HeadTemplate.php";
+<?php
+namespace App\Service;
+
+use App\Model\Page\HeadTemplate;
 
 abstract class AbstractPage {
     

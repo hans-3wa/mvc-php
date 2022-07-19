@@ -1,7 +1,9 @@
 <?php 
-require_once './repository/ProductRepository.php';
-require_once './model/Product.php';
-require_once './view/ProductView.php';
+namespace App\Controller;
+
+use App\Model\Entity\Product;
+use App\Repository\ProductRepository;
+use App\View\ProductView;
 
 class ProductController {
     

@@ -1,12 +1,16 @@
 <?php 
-require_once './view/UserView.php';
-require_once './repository/UserRepository.php';
-require_once './model/User.php';
+namespace App\Controller;
+
+use App\View\UserView;
+use App\Repository\UserRepository;
+use App\Model\Entity\User;
+use Exception;
 
 class UserController {
     
-    private $view;
-    
+    private UserView $view;
+    private UserRepository $repository;
+
     public function __construct()
     {
         $this->view = new UserView();
@@ -71,7 +75,7 @@ class UserController {
             
             header('location: ./index.php?url=account');
             exit();
-        } 
+        }
         else {
             header('location: ./index.php?url=login&email='.$email.'&code=401');
             exit();
@@ -84,11 +88,22 @@ class UserController {
         header('location: ./index.php');
         exit();
     }
-    
-    
+
+    /**
+     * @throws Exception
+     */
     public function register(): void
     {
-        echo $this->view->displayRegister();
+        $email = $_GET['email'] ?? '';
+        $code = isset($_GET['code']) ? (int)$_GET['code'] : 200;
+        $errors = [];
+
+        if($code === 401){
+            $errors = ["email" => $email, "message" => "Identifiants incorrects"];
+        }
+        //var_dump($email, $code, $errors); die();
+
+        echo $this->view->displayRegister($errors);
     }
     
     public function securityRegister(): void
@@ -96,7 +111,6 @@ class UserController {
         
         if(strlen($_POST['password']) < 6){
             header('location: ./index.php?url=register');
-            exit();
         }else{
             
             $passCrypt = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -109,16 +123,14 @@ class UserController {
             $user->setRole('Admin');
             
             $data = $this->repository->insertUser($user);
-            var_dump($data);
-            die();
+
             if($data){
                 $_SESSION['user'] = serialize($user);
                 header('location: ./index.php?url=account');
-                exit();
             } else {
                 header('location: ./index.php?url=register');
-                exit();
             }
         }
+        exit();
     }
 }

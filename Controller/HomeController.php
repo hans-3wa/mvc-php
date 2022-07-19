@@ -1,11 +1,13 @@
-<?php 
-require_once './view/HomeView.php';
-require_once './repository/ProductRepository.php';
-require_once './model/Product.php';
+<?php
+namespace App\Controller;
+
+use App\View\HomeView;
+use App\Repository\ProductRepository;
+use App\Model\Entity\Product;
 
 class HomeController {
     
-    private $view;
+    private HomeView $view;
     
     public function __construct(){
         $this->view = new HomeView();

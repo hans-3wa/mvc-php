@@ -1,6 +1,7 @@
-<?php 
-require_once './model/page/ProductPage.php';
-require_once './model/Product.php';
+<?php
+namespace App\View;
+require_once './Model/Page/ProductPage.php';
+require_once './Model/Product.php';
 
 class ProductView {
     

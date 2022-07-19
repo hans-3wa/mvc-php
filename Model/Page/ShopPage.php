@@ -1,7 +1,7 @@
-<?php 
-require_once "./service/Utils.php";
-require_once "./service/AbstractPage.php";
-require_once "./service/Pagination.php";
+<?php
+namespace App\Model\Page;
+
+use App\Service\AbstractPage;
 
 
 class ShopPage extends AbstractPage {
@@ -55,20 +55,20 @@ class ShopPage extends AbstractPage {
     public function constructShop(): void
     {
         // Avec Pagination
-        // // si &page=1
-        // $page = $_GET['page'] ?? 0; // si pas de &page met par défault 0
+        // // si &Page=1
+        // $Page = $_GET['Page'] ?? 0; // si pas de &Page met par défault 0
 
         // $pagination = new Pagination($this->products, 3);
-        // $pagination->setCurrent($page);
+        // $pagination->setCurrent($Page);
 
         // foreach($pagination->getDatasetByPage() as $product){
             
-        //     $page = $this->utils->searchInc('shopArticle');
-        //     $page = str_replace('{% title %}', $product->getName(), $page);
-        //     $page = str_replace('{% image %}', $product->getUrlPicture(), $page);
-        //     $page = str_replace('{% description %}', $product->getDescription(), $page);
-        //     $page = str_replace('{% id %}', $product->getId(), $page);
-        //     $this->article .= $page;
+        //     $Page = $this->utils->searchInc('shopArticle');
+        //     $Page = str_replace('{% title %}', $product->getName(), $Page);
+        //     $Page = str_replace('{% image %}', $product->getUrlPicture(), $Page);
+        //     $Page = str_replace('{% description %}', $product->getDescription(), $Page);
+        //     $Page = str_replace('{% id %}', $product->getId(), $Page);
+        //     $this->article .= $Page;
         // }
         
         foreach($this->products as $product){

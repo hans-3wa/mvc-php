@@ -1,11 +1,9 @@
 <?php
+namespace App\Repository;
+use PDO;
+
 abstract class AbstractRepository
 {
-    
-    private const SERVER = "db.3wa.io";
-    private const USER = "pierrewaflart";
-    private const PASSWORD = "e467267a12d92bcc8e7b8e37f626676b";
-    private const BASE = "pierrewaflart_bakery";
     
     protected $table;
     protected $connexion;
@@ -24,7 +22,7 @@ abstract class AbstractRepository
             if ($resultat) {
                 $data = $resultat->fetchAll(PDO::FETCH_ASSOC);
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             die($e);
         }
         
@@ -35,10 +33,10 @@ abstract class AbstractRepository
     private function constructConnexion(){
         
         try {
-            
-            $this->connexion = new PDO("mysql:host=" . self::SERVER . ";dbname=" . self::BASE, self::USER, self::PASSWORD);
+            $this->connexion = new PDO("mysql:host=" . $_ENV["DATABASE_HOST"] . ";dbname=" . $_ENV["DATABASE_DB_NAME"], $_ENV["DATABASE_USER"], $_ENV["DATABASE_PASSWORD"]);
             $this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
+            var_dump( $_ENV["DATABASE_PASSWORD"]);
             die('Erreur : ' . $e->getMessage());
         }
         $this->connexion->exec("SET CHARACTER SET utf8");

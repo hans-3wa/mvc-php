@@ -1,0 +1,17 @@
+{
+    "name": "peedro07/mvc-php",
+    "autoload": {
+        "psr-4": {
+            "App\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Waflart Pierre",
+            "email": "pierre.waflart@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
+}

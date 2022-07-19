@@ -76,3 +76,5 @@ fabric.properties
 /.idea/mvc-php.iml
 /.idea/php.xml
 /.idea/vcs.xml
+
+/vendor/

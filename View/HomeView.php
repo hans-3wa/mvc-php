@@ -1,7 +1,8 @@
-<?php 
-require_once './service/AbstractPage.php';
-require_once './model/page/ShopPage.php';
-require_once './model/page/DefaultPage.php';
+<?php
+namespace App\View;
+
+use App\Model\Page\DefaultPage;
+use App\Model\Page\ShopPage;
 
 class HomeView {
     

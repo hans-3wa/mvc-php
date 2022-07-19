@@ -1,9 +1,10 @@
-<?php 
-require_once "./service/Utils.php";
+<?php
+namespace App\Model\Page;
+
+use App\Service\Utils;
 
 class HeadTemplate {
-    
-    
+
     private string $content;
     
     private string $title;

@@ -1,7 +1,7 @@
 <?php 
+namespace App\Model\Entity;
 
 class Product {
-    
     
     private int $id;
     

@@ -1,69 +1,19 @@
 <?php
 // Router
 session_start();
+require_once realpath(__DIR__.'/vendor/autoload.php');
 
-require_once './controller/HomeController.php';
-require_once './controller/UserController.php';
-require_once './controller/ProductController.php';
+use App\Service\Router;
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+$db = getenv("DATABASE_HOST");
+
 
 $url = $_GET['url'] ?? "home";
 
-switch($url){
-    // Route index.php?url=home
-    case "home" : 
-        $homeController = new HomeController();
-        $homeController->home();
-        break;
-    
-    // Route index.php?url=account
-    case "account" :
-        $userController = new UserController();
-        $userController->account();
-        break;
-    
-    // Route index.php?url=login
-    case "login" :
-        $userController = new UserController();
-        $userController->login();
-        break;
-    
-    case "securityLogin" : 
-        $userController = new UserController();
-        $userController->securityLogin();
-        break;
-    
-    case "logout" : 
-        $userController = new UserController();
-        $userController->logout();
-        break;
-        
-    // Route index.php?url=shop
-    case "shop" :
-        $homeController = new HomeController();
-        $homeController->shop();
-        break;
-        
-    case "product":
-        $productController = new ProductController();
-        $productController->getProduct();
-        break;
-        
-    case "test":
-        $home = new HomeController();
-        $home->test();
-        break;
-        
-    case "responseTest":
-        $home = new HomeController();
-        $home->responseTest();
-        break;
-        
-    case "search":
-        $controller = new ProductController();
-        $controller->querySearch();
-        break;
-        
-    case "404":
-        echo "Welcolm 404 mon poto :)";
-}
+$router = new Router();
+$router->executePath($url);
+
 
