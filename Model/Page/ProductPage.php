@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Page;
-require_once "./Model/Product.php";
+use App\Model\Entity\Product;
+use App\Service\AbstractPage;
+
 
 
 class ProductPage extends AbstractPage {
@@ -12,8 +14,7 @@ class ProductPage extends AbstractPage {
         parent::__construct();
         $this->body = $this->utils->searchInc('productDetail');
     }
-    
-    
+
     /**
      * @return Product
      */

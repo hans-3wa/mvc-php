@@ -74,63 +74,17 @@ class UserController {
             $_SESSION['user'] = serialize($user);
             
             header('location: ./index.php?url=account');
-            exit();
         }
         else {
             header('location: ./index.php?url=login&email='.$email.'&code=401');
-            exit();
         }
+        exit();
     }
     
     public function logout(): void
     {
         session_destroy();
         header('location: ./index.php');
-        exit();
-    }
-
-    /**
-     * @throws Exception
-     */
-    public function register(): void
-    {
-        $email = $_GET['email'] ?? '';
-        $code = isset($_GET['code']) ? (int)$_GET['code'] : 200;
-        $errors = [];
-
-        if($code === 401){
-            $errors = ["email" => $email, "message" => "Identifiants incorrects"];
-        }
-        //var_dump($email, $code, $errors); die();
-
-        echo $this->view->displayRegister($errors);
-    }
-    
-    public function securityRegister(): void
-    {
-        
-        if(strlen($_POST['password']) < 6){
-            header('location: ./index.php?url=register');
-        }else{
-            
-            $passCrypt = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        
-            $user = new User();
-            $user->setName(htmlspecialchars($_POST['lastName']));
-            $user->setFirstName(htmlspecialchars($_POST['firstName']));
-            $user->setEmail(htmlspecialchars($_POST['email']));
-            $user->setPassword(htmlspecialchars($passCrypt));
-            $user->setRole('Admin');
-            
-            $data = $this->repository->insertUser($user);
-
-            if($data){
-                $_SESSION['user'] = serialize($user);
-                header('location: ./index.php?url=account');
-            } else {
-                header('location: ./index.php?url=register');
-            }
-        }
         exit();
     }
 }

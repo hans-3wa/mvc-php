@@ -1,7 +1,7 @@
 <?php
 namespace App\View;
-require_once './Model/Page/ProductPage.php';
-require_once './Model/Product.php';
+use App\Model\Entity\Product;
+use App\Model\Page\ProductPage;
 
 class ProductView {
     
