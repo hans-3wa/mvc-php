@@ -1,6 +1,8 @@
 <?php 
 namespace App\Repository;
-require_once "./Repository/AbstractRepository.php";
+
+use Exception;
+use PDO;
 
 class ProductRepository extends AbstractRepository {
     

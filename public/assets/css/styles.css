@@ -368,7 +368,6 @@ PAGE CONNEXION
 .container-login {
   top: 0;
   left: 0;
-  position: absolute;
   background-image: url(./img/pexels-diana-akhmetianova-7296681.jpg);
   background-size: cover;
   background-attachment: fixed;
@@ -453,7 +452,6 @@ ACOUNT
 /************** HIDE *****************/
 .login {
   display: flex;
-  margin-top: 100px;
 }
 .infoProduct {
   display: none;

@@ -1,10 +1,25 @@
 <?php
 namespace App\View;
+
 use App\Model\Entity\Product;
 use App\Model\Page\ProductPage;
+use App\Model\Page\ShopPage;
 
-class ProductView {
+class ProductView extends AbstractView {
     
+    /**
+     * @param array $products
+     * @return string
+     */
+    public function displayShop(array $products): string
+    {
+        $shopPage = new ShopPage();
+        $shopPage->setProducts($products);
+        $shopPage->head->setTitle('Boutique');
+        $shopPage->constructShop();
+        return $shopPage->getPage();
+    }
+
     /**
      * @param Product $product
      * @return string

@@ -11,6 +11,7 @@ class HomeView {
      */ 
     public function displayHome(): string
     {
+
         $page = new DefaultPage('index');
         $page->assemblerPage();
         return $page->getPage();

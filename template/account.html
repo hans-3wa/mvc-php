@@ -1,15 +1,5 @@
  <div class="container container-section">
         <div class="container-login">
-            <header>
-                <a href="./index.html" class="logo">Boulangerie</a>
-                <div class="toggle">
-                    <ul>
-                        <li><a href="./">Accueil</a></li>
-                        <li><a href="#">Profil</a></li>
-                        <li><a href="#"><i class="fas fa-shopping-basket"></i>Mon panier</a></li>
-                    </ul>
-                </div>
-            </header>
 
             <nav class="nav-JS">
                 <ul>
@@ -25,12 +15,9 @@
                     <div class="blockColor"></div>
                     <div class="contentBx justify">
                         <h3>Connexion</h3>
-                        <p>Nom : {% username %}'</p>
-                        <p>Prénom : Joe</p>
-                        <p>Date de naissance : 17/02/1990</p>
-                        <p>Téléphone : 01.23.45.67.89</p>
-                        <p>Email : jeo@mail.com</p>
-                        <p>Adresse : 7 Rue Gringant Limon</p>
+                        <p>Nom : {% lastName %}</p>
+                        <p>Prénom : {% firstName %}</p>
+                        <p>Email : {% email %}</p>
                         <a href="#">Modifier mot de Passe</a>
                     </div>
                 </div>
@@ -114,38 +101,5 @@
                     </div>
                 </div>
             </section>
-
-            <footer class="position-footer">
-                <div class="block">
-                    <h3>Heure d'ouverture</h3>
-                    <p>
-                    Lundi: Fermé <br>
-                    Mardi-Mercredi : 9h - 18h<br>
-                    Jeudi-Vendredi : 9h - 18h<br>
-                    Samedi-Dimanche : 9h - 12h
-                    </p>
-                </div>
-
-                <div class="block">
-                    <h3>Contact</h3>
-                    <div class="adress">
-                        <p>
-                        13 Bd Galopin Renoue<br>
-                        Maine-et-Loire,<br>
-                        49000 Angers<br>
-                        01.02.03.45.47
-                        </p>
-                    </div>
-                </div>
-
-                <div class="block">
-                    <h3>Social networks</h3>
-                    <div class="social-network">
-                        <i class="fab fa-facebook-f"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-pinterest-p"></i>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>

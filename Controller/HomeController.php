@@ -17,27 +17,4 @@ class HomeController {
     {
         echo $this->view->displayHome();
     }
-    
-    public function shop(): void
-    {
-        $productRepository = new ProductRepository();
-        $datas = $productRepository->fetchAll();
-        $products = [];
-        //var_dump($datas); die();
-        foreach($datas as $data){
-            $product = new Product();
-            $product->setId($data['id']);
-            $product->setName($data['name']);
-            $product->setQuantity($data['quantity']);
-            $product->setPrice($data['price']);
-            $product->setUrlPicture($data['url_picture']);
-            $product->setDescription($data['description']);
-            
-            $products[] = $product;
-        }
-        //var_dump($products, $datas); die();
-        
-        
-        echo $this->view->displayShop($products);
-    }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Service;
 
 class Pagination {
@@ -50,7 +51,8 @@ class Pagination {
         $this->current = $current;
     }
 
-    public function getPagesCount() :int {
+    public function getPagesCount() :int
+    {
         $len = count($this->datasets);
         $c = $len / $this->maxPerPage;
 
@@ -89,10 +91,10 @@ class Pagination {
                 padding: 10px 30px 6px 30px;
                 border-bottom: 4px solid #a18758;
                 transform: scale(1.05, 1.05);'
-                href='$url".$have."Page=$i'> $i </a>";
+                href='$url".$have."page=$i'> $i </a>";
 
             } else {
-                $links .= "<a class='pageination-link btn' href='$url".$have."Page=$i'> $i </a>";
+                $links .= "<a class='pageination-link btn' href='$url".$have."page=$i'> $i </a>";
             }
         }
         return "<div class='gallery'>". $links."</div>";

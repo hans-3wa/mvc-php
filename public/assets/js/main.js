@@ -1,5 +1,3 @@
-<script type="text/javascript">
-'use strict'
 
 /**************************************************************
  * 
@@ -118,5 +116,3 @@ function showBlock() {
 function toggleA() {
     this.classList.toggle('active')
 }
-
-</script>

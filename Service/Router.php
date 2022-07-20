@@ -5,7 +5,7 @@ namespace App\Service;
 use App\Controller\HomeController;
 use App\Controller\ProductController;
 use App\Controller\UserController;
-
+use App\Controller\SecurityController;
 
 
 class Router
@@ -28,26 +28,40 @@ class Router
                 $userController->account();
                 break;
 
+            case "updateProfil":
+                $userController = new UserController();
+                $userController->updateAccount();
+                break;
+
             // Route index.php?url=login
             case "login" :
-                $userController = new UserController();
-                $userController->login();
+                $securityController = new SecurityController();
+                $securityController->login();
                 break;
 
             case "securityLogin" :
-                $userController = new UserController();
-                $userController->securityLogin();
+                $securityController = new SecurityController();
+                $securityController->securityLogin();
+                break;
+
+            case "register" :
+                $securityController = new SecurityController();
+                $securityController->register();
+                break;
+
+            case "securityRegister" :
+                $securityController = new SecurityController();
+                $securityController->securityRegister();
                 break;
 
             case "logout" :
-                $userController = new UserController();
-                $userController->logout();
-                break;
+                $securityController = new SecurityController();
+                $securityController->logout();
 
             // Route index.php?url=shop
             case "shop" :
-                $homeController = new HomeController();
-                $homeController->shop();
+                $productController = new ProductController();
+                $productController->shop();
                 break;
 
             case "product":

@@ -1,34 +1,23 @@
 <?php
+
 namespace App\View;
 
+use App\Model\Entity\User;
+use App\Model\Page\AccountPage;
 use App\Model\Page\DefaultPage;
+
 class UserView {
     
     /**
-     * @return string
-     */ 
-    public function displayAccount(): string
-    {
-        $page = new DefaultPage("account");
-        $page->assemblerPage();
-        return $page->getPage();
-    }
-
-    /**
-     * @param array $errors
-     * @return string
-     * @throws \Exception
+     * @params User $user
+     * return string
      */
-    public function displayLogin(array $errors): string
+    public function displayAccount(User $user): string
     {
-        $page = new DefaultPage("login");
-        $page->setErrors($errors);
-        
-        $_SESSION['csrf'] = bin2hex(random_bytes(15));
-        
-        $page->setCsrf($_SESSION['csrf']);
+        $page = new AccountPage("account");
+        $page->setUser($user);
+        $page->generateBody();
         $page->assemblerPage();
-        
         return $page->getPage();
     }
 }

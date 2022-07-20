@@ -7,7 +7,7 @@ abstract class AbstractPage {
     
     private string $page;
     
-    protected HeadTemplate $head;
+    public HeadTemplate $head;
     
     protected string $header;
     
@@ -15,7 +15,7 @@ abstract class AbstractPage {
     
     protected string $footer;
     
-    protected $javascript; 
+    protected $javascript;
     
     protected Utils $utils;
     
